@@ -1,0 +1,14 @@
+{
+  "name": "patatap",
+  "version": "1.0.0",
+  "description": "Create your beats with your keyboard. Make music and fun",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "paper": "^0.12.4"
+  }
+}
