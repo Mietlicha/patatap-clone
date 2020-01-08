@@ -10,12 +10,44 @@
       content="Create your beats with your keyboard. Make music and fun"
     />
     <title>Patatap clone</title>
-    <link rel="stylesheet" href="style.css" />
     <script type="text/javascript" src="paper-full.js"></script>
-    <!-- Define inlined PaperScript associate it with myCanvas -->
+    <script
+      type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.1.3/howler.core.min.js"
+    ></script>
+    <link rel="stylesheet" href="style.css" />
+
     <script type="text/paperscript" canvas="myCanvas">
-      var myCircle = new Path.Circle(new Point(100, 70), 50);
-      myCircle.fillColor = 'red';
+
+      var sound1 = new Howl({
+        src: ['sounds/bubbles.mp3']
+      });
+
+      var sound2 = new Howl({
+        src: ['sounds/clay.mp3']
+      });
+
+      var circles= [];
+
+      function onKeyDown(event) {
+        if (event.key==="a"){
+        sound1.play();
+        } else {sound2.play();};
+
+        var maxPoint = new Point(view.size.width, view.size.height);
+        var randomPoint = Point.random();
+        var point = maxPoint * randomPoint;
+        var newCircle = new Path.Circle(point, 500);
+        newCircle.fillColor = 'red';
+        circles.push(newCircle);
+      }
+
+      function onFrame(event) {
+        for(var i =0; i<circles.length; i++){
+          console.log(circles[i]);
+        circles[i].fillColor.hue += 1;
+        circles[i].scale(0.9);
+      }}
     </script>
   </head>
   <body>
